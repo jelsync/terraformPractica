@@ -9,12 +9,10 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-east-2"
-  profile = "personal"
+  region  = var.region
+  profile = var.profile
+  default_tags {
+    tags = var.tags
+  }
 }
 
-provider "aws" {
-  region  = "us-east-1"
-  profile = "personal"
-  alias = "virginia"
-}
