@@ -3,7 +3,7 @@ resource "aws_vpc" "vpc_ohio" {
 
    tags = {
     Name = "VPC_OHIO"
-    env = "dev"
+    env = var.env
   }
 }
 
@@ -12,7 +12,7 @@ resource "aws_vpc" "vpc_virginia" {
 
    tags = {
     Name = "VPC_VIRGINIA"
-    env = "dev"
+    env = var.env
   }
   provider = aws.virginia
 }
