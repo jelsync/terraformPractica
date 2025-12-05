@@ -43,3 +43,9 @@ variable "profile" {
   type        = string
 
 }
+
+variable "sg_ingress_cidr" {
+  description = "CIDR para reglas de ingreso"
+  type        = string
+  
+}
