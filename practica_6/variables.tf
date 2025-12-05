@@ -49,3 +49,9 @@ variable "sg_ingress_cidr" {
   type        = string
   
 }
+
+variable "ec2" {
+  description = "Configuracion de instancia EC2"
+  type = map(string)
+  
+}
