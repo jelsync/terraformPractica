@@ -41,17 +41,19 @@ variable "region" {
 variable "profile" {
   description = "Perfil AWS CLI"
   type        = string
-
 }
 
 variable "sg_ingress_cidr" {
   description = "CIDR para reglas de ingreso"
   type        = string
-  
 }
 
 variable "ec2" {
   description = "Configuracion de instancia EC2"
   type = map(string)
-  
+}
+
+variable "enabled_monitoring" { 
+  description = "Habilitar o deshabilitar el monitoreo detallado de CloudWatch para la instancia EC2"
+  type        = number  
 }

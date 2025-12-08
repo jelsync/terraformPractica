@@ -28,7 +28,7 @@ variable "instancias_ec2" {
 }
 
 resource "aws_instance" "public_instance" {
-  for_each               = var.instancias_ec2  # En el caso que el tipo de variable sea una lista usar toset(var.instancias_ec2) asi se convierte el tipo list a set sin dejar de usar el foreach
+  for_each               = var.instancias_ec2 # En el caso que el tipo de variable sea una lista usar toset(var.instancias_ec2) asi se convierte el tipo list a set sin dejar de usar el foreach
   ami                    = var.ec2.ami
   instance_type          = var.ec2.instance_type
   subnet_id              = aws_subnet.public_subnet.id
@@ -38,5 +38,19 @@ resource "aws_instance" "public_instance" {
   user_data = file("scripts/userdata.sh")
   tags = {
     Name = each.value
+  }
+}
+
+resource "aws_instance" "monitoring_instance" {
+  count                  = var.enabled_monitoring == 0 ? 0 : 1
+  ami                    = var.ec2.ami
+  instance_type          = var.ec2.instance_type
+  subnet_id              = aws_subnet.public_subnet.id
+  key_name               = data.aws_key_pair.key.key_name
+  vpc_security_group_ids = [aws_security_group.sg_public_instance.id]
+
+  user_data = file("scripts/userdata.sh")
+  tags = {
+    Name = "MonitoringInstance"
   }
 }
