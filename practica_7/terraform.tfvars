@@ -8,9 +8,9 @@ tags = {
   "owner"       = "Jelsyn"
   "cloud"       = "aws"
   "iac"         = "terraform"
-  "iac_version" = "~> 1.13.3"
-  "project"     = "Fenix" 
-  "region"          = "us-east-2"
+  "iac_version" = "1.13.3"
+  "project"     = "fenix"
+  "region"      = "us-east-2"
 }
 region          = "us-east-2"
 profile         = "personal"
@@ -20,5 +20,5 @@ ec2 = {
   "ami"           = "ami-025ca978d4c1d9825"
   "instance_type" = "t3.micro"
 }
-enabled_monitoring = 1
+enabled_monitoring = 0
 

@@ -51,6 +51,6 @@ resource "aws_instance" "monitoring_instance" {
 
   user_data = file("scripts/userdata.sh")
   tags = {
-    Name = "MonitoringInstance-${local.sufix}"
+    Name = "MonitoringInstance"
   }
 }

@@ -7,7 +7,7 @@ resource "aws_route_table" "public_crt" {
   }
 
   tags = {
-    Name = "Public Route Table-${local.sufix}"
+    Name = "Public Route Table"
   }
 }
 
