@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg_public_instance" {
-  name        = "Public instance sg"
+  name        = "Public instance sg-${local.sufix}"
   description = "Permite ingreso por ssh y permite el trafico hacia el exterior"
   vpc_id      = aws_vpc.vpc_ohio.id
 
@@ -19,6 +19,6 @@ resource "aws_security_group" "sg_public_instance" {
   }
 
   tags = {
-    Name = "Public instance sg"
+    Name = "Public instance sg-${local.sufix}"
   }
 }

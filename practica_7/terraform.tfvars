@@ -9,6 +9,8 @@ tags = {
   "cloud"       = "aws"
   "iac"         = "terraform"
   "iac_version" = "~> 1.13.3"
+  "project"     = "Fenix" 
+  "region"          = "us-east-2"
 }
 region          = "us-east-2"
 profile         = "personal"
