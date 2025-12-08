@@ -57,3 +57,8 @@ variable "enabled_monitoring" {
   description = "Habilitar o deshabilitar el monitoreo detallado de CloudWatch para la instancia EC2"
   type        = number  
 }
+
+variable "ingress_port_list" {
+  description = "Lista de puertos de ingreso para el grupo de seguridad"
+  type        = list(number)
+}

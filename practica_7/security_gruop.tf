@@ -3,12 +3,15 @@ resource "aws_security_group" "sg_public_instance" {
   description = "Permite ingreso por ssh y permite el trafico hacia el exterior"
   vpc_id      = aws_vpc.vpc_ohio.id
 
-  ingress {
-    description = "SSH atraves de internet"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.sg_ingress_cidr]
+  dynamic "ingress" {
+    for_each = var.ingress_port_list
+    content {
+      description = "Ingreso al puerto ${ingress.value}"
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = [var.sg_ingress_cidr]
+    }
   }
 
   egress {

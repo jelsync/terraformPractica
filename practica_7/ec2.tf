@@ -24,7 +24,7 @@
 variable "instancias_ec2" {
   description = "Número de instancias EC2 a crear"
   type        = set(string)
-  default     = ["apache1", "mysql1", "jumpserver"]
+  default     = ["apache"]
 }
 
 resource "aws_instance" "public_instance" {
@@ -35,7 +35,13 @@ resource "aws_instance" "public_instance" {
   key_name               = data.aws_key_pair.key.key_name
   vpc_security_group_ids = [aws_security_group.sg_public_instance.id]
 
-  user_data = file("scripts/userdata.sh")
+  user_data = <<-EOF
+              #!/bin/bash
+              sudo yum install -y nginx
+              sudo systemctl enable nginx
+              sudo systemctl start nginx
+              echo "<h1>Hello from Terraform!</h1>" > /var/www/html/index.html
+              EOF
   tags = {
     Name = each.value
   }
