@@ -69,7 +69,3 @@ icacls "C:\ruta\a\mi\mykey.pem" /grant:r "$env:USERNAME:(R)"
 - Ejecutar `terraform plan` en las carpetas de práctica que quieras desplegar.
 - Instalar `tfsec` y correr análisis en cada carpeta.
 - Considerar usar workspaces o estructuras por entorno (dev/prod) para evitar colisiones de nombres.
-
-Si quieres, puedo:
-- Añadir instrucciones específicas por `practica_X` (ejemplo de variables, pasos por carpeta).
-- Ejecutar cambios en alguno de los archivos para parametrizar mejor (por ejemplo, remover valores hardcodeados).
